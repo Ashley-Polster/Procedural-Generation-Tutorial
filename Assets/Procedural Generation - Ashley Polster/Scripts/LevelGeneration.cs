@@ -13,9 +13,12 @@ public class LevelGeneration : MonoBehaviour {
 	[SerializeField]
 	private float centerVertexZ, maxDistanceZ;
 
-	[SerializeField]
-	private TreeGeneration treeGeneration;
+    [SerializeField]
+    private TreeGeneration treeGeneration;
 
+    [SerializeField]
+    private CheckpointGeneration checkpointGeneration;
+    
 	[SerializeField]
 	private RiverGeneration riverGeneration;
 
@@ -57,8 +60,11 @@ public class LevelGeneration : MonoBehaviour {
 		// generate trees for the level
 		treeGeneration.GenerateTrees (this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData);
 
-		// generate rivers for the level
-		riverGeneration.GenerateRivers(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, levelData);
+        // generate checkpoints for the level
+        checkpointGeneration.GenerateCheckpoints(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, distanceBetweenVertices, levelData);
+
+        // generate rivers for the level
+        riverGeneration.GenerateRivers(this.levelDepthInTiles * tileDepthInVertices, this.levelWidthInTiles * tileWidthInVertices, levelData);
 	}
 }
 
